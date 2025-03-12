@@ -71,7 +71,7 @@ export const App: React.FC = () => {
     }
 
     if (_isReverse) {
-      preparedGoods = [...preparedGoods.reverse()];
+      preparedGoods = [...preparedGoods].reverse();
     }
 
     if (!_sortField && !_isReverse) {
@@ -82,19 +82,19 @@ export const App: React.FC = () => {
   };
 
   const handlerAlphaSort = (): void => {
-    renderGoods(sortGoods, SortType.alphabetically, isReverse);
+    renderGoods(goodsFromServer, SortType.alphabetically, isReverse);
   };
 
-  const handlerLengthaSort = (): void => {
-    renderGoods(sortGoods, SortType.length, isReverse);
+  const handlerLengthSort = (): void => {
+    renderGoods(goodsFromServer, SortType.length, isReverse);
   };
 
   const handlerReverse = (): void => {
-    renderGoods(sortGoods, sortField, !isReverse);
+    renderGoods(goodsFromServer, sortField, !isReverse);
   };
 
   const handlerReset = (): void => {
-    renderGoods(sortGoods, '', false);
+    renderGoods(goodsFromServer, '', false);
   };
 
   return (
@@ -115,7 +115,7 @@ export const App: React.FC = () => {
           className={cn('button', ' is-success', {
             'is-light': sortField !== SortType.length,
           })}
-          onClick={handlerLengthaSort}
+          onClick={handlerLengthSort}
         >
           Sort by length
         </button>
